@@ -1,0 +1,27 @@
+service: lambdaaws
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: sa-east-1
+  memorySize: 1024
+  iamRoleStatements: 
+    - Effect: Allow
+      Action: 
+        - s3:GetObject
+        - s3:PutObject
+      Resource:
+        - "arn:aws:s3:::*"
+
+functions:
+  transcode:
+    handler: transcode.handle
+    environment:
+      bucket: vaitomarnocu
+    events:
+      - s3:
+          bucket: vaitomarnocu
+          event: s3:ObjectCreated:*
+          rules: 
+            - prefix: files
+            - suffix: .mp4

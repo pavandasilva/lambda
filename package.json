@@ -1,0 +1,16 @@
+{
+  "name": "nodeless",
+  "version": "1.0.0",
+  "scripts": {
+    "predeploy": "npm install --platform linux --arch=x64 @ffmpeg-installer/ffmpeg&& npm install --platform linux --arch=x64 ffmpeg&& npm install --platform linux --arch=x64 fluent-ffmpeg",
+    "deploy": "serverless deploy -v"
+  },
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.0.20",
+    "@ffprobe-installer/ffprobe": "^1.0.12",
+    "ffmpeg": "0.0.4",
+    "ffprobe": "^1.1.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "linux": "^4.2.1"
+  }
+}
